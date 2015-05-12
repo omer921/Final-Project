@@ -1,0 +1,1 @@
+Omer WinraukeReferences1. Learned the revalidate function from the book. (Nov. 12 2013)2. Learned the try and catch function from the book after speaking to Dr.Baruch (Nov. 11 2013)3. Learned the repaint function in the book  before class.4. Learned about the date class from the book. (Nov. 30 2013)

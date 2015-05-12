@@ -1,0 +1,38 @@
+//Clerk.java
+import java.util.*;
+import java.io.*;
+
+public class Clerk
+{
+  private Scanner scan;
+  private String user, name, password;
+
+  public Clerk(String name, String user, String password)
+  {
+     this.user = user;
+     this.name = name;
+     this.password = password;
+  }
+  
+  public String getUser()
+  {
+    return user;
+  }
+  
+  public String getName()
+  {
+    return name;
+  }
+  
+  public String getPassword()
+  {
+    return password;
+  }
+  
+  public String toString()
+  {
+    return user + " " + password;
+  }
+}
+
+    

@@ -1,0 +1,139 @@
+//Omer Winrauke DepositPanel.java
+import java.awt.*;
+import java.awt.event.*;
+import javax. swing. *;
+import java.io.*;
+
+public class DepositPanel extends JPanel
+{
+  private JLabel acct, amount;
+  private JTextField tAcct, tAmount;
+  private String theAcct, theAmount;
+  private JButton back, deposit;
+  private final int MAX_TRANSFER = 10000;
+  public DepositPanel()
+  {
+    setLayout (new BoxLayout (this, BoxLayout.Y_AXIS));
+    back = new JButton("Back");
+    deposit = new JButton("Deposit");
+    acct = new JLabel("Account:");
+    amount = new JLabel("Amount:");
+    tAcct = new JTextField();
+    tAmount = new JTextField();
+    deposit.addActionListener(new depositButtonListener());
+    back.addActionListener(new backButtonListener());
+    setPreferredSize(new Dimension(550, 300));
+    add(acct);
+    add(tAcct);
+    add(amount);
+    add(tAmount);
+    add(deposit);
+    add(back);
+  }
+  
+  private class backButtonListener implements ActionListener
+  {
+    public void actionPerformed(ActionEvent event)
+    {
+      ClerkPanel panel = new ClerkPanel();      
+      remove(acct);
+      remove(amount);
+      remove(tAcct);
+      remove(tAmount);
+      remove(deposit);
+      remove(back);
+      revalidate();
+      add(panel);
+    }
+  }
+  
+  private class depositButtonListener implements ActionListener
+  {
+    public void actionPerformed(ActionEvent event)
+    {
+      try 
+      {
+        theAcct = tAcct.getText();
+        theAmount = tAmount.getText();
+        System.out.println(theAcct);
+        if (theAcct.equals(""))
+        {
+          System.out.println("caught");
+        }
+        else
+        {
+          if (theAmount.equals(""))
+          {
+            System.out.println("caught");
+          }
+          else 
+          {
+            if (!(Tools.numCheck(theAcct))) 
+              JOptionPane.showMessageDialog(null, "Invalid bank account.");
+            else if (Integer.parseInt(theAcct) < 0 || Integer.parseInt(theAcct) >= AccountArrayList.accounts.size())
+              JOptionPane.showMessageDialog(null, "Invalid bank account.");
+            else if (!(Tools.numCheck(theAmount)))
+              JOptionPane.showMessageDialog(null, "Invalid amount.");
+            else if (Double.parseDouble(theAmount) <= 0)
+              JOptionPane.showMessageDialog(null, "Invalid amount");
+            else{
+              if ((Double.parseDouble(theAmount)) < MAX_TRANSFER)
+              {
+              AccountArrayList.accounts.get(Integer.parseInt(theAcct)).setValue('d', Double.parseDouble(theAmount));
+              JOptionPane.showMessageDialog(null, "Deposit Accepted.");
+              System.out.println("Executed");
+              //pop up screen 
+              ClerkPanel panel = new ClerkPanel();      
+              remove(acct);
+              remove(amount);
+              remove(tAcct);
+              remove(tAmount);
+              remove(deposit);
+              remove(back);
+              revalidate();
+              add(panel);
+              }
+              else 
+              {
+                String answer = JOptionPane.showInputDialog("Manager PIN required:"); 
+                if (!(Tools.managerCheck(answer)))
+                {
+                  AccountArrayList.accounts.get(Integer.parseInt(theAcct)).setValue('d', Double.parseDouble(theAmount));
+                  JOptionPane.showMessageDialog(null, "Deposit Accepted.");
+                  System.out.println("Executed");
+                  //pop up screen 
+                  ClerkPanel panel = new ClerkPanel();      
+                  remove(acct);
+                  remove(amount);
+                  remove(tAcct);
+                  remove(tAmount);
+                  remove(deposit);
+                  remove(back);
+                  revalidate();
+                  add(panel);
+                }
+                else 
+                {
+                  JOptionPane.showMessageDialog(null, "Invalid Manager PIN.");
+                  ClerkPanel panel = new ClerkPanel();      
+                  remove(acct);
+                  remove(amount);
+                  remove(tAcct);
+                  remove(tAmount);
+                  remove(deposit);
+                  remove(back);
+                  revalidate();
+                  add(panel);
+                }
+              }
+            }
+          }
+        }
+      }
+      catch (IOException e) 
+      {
+        
+      }
+    }
+  }
+}

@@ -1,0 +1,22 @@
+//ManagerArrayList.java
+import java.io.*;
+import java.util.*;
+
+public class ManagerArrayList
+{
+  static ArrayList<Manager> managers = new ArrayList<Manager>();
+  public static void managerList() throws IOException
+  {
+    Scanner scan = new Scanner(new File("managers.txt"));
+    while(scan.hasNext())
+    {
+      String check1 = scan.nextLine();
+      //String check2 = scan.nextLine();
+      int find = check1.indexOf(' ');
+      int check3 = Integer.parseInt(check1.substring(find+1));
+      Manager m = new Manager(check1.substring(0,find),  check3);
+      managers.add(m);
+    }
+      System.out.println(managers);
+  }
+}

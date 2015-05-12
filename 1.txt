@@ -1,0 +1,9 @@
+John Test
+123 This is a test street
+Chicago
+IL
+60610
+7184547935
+15629.66
+t 10000.0 0 Thu Nov 28 14:25:10 EST 2013
+d 100.0 Mon Dec 02 16:50:54 EST 2013

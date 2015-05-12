@@ -1,0 +1,24 @@
+//ClerkArrayList.java
+import java.io.*;
+import java.util.*;
+
+public class ClerkArrayList
+{
+  static ArrayList<Clerk> clerks = new ArrayList<Clerk>();
+  public static void clerkList() throws IOException
+  {
+    Scanner scan = new Scanner(new File("clerks.txt"));
+    Clerk clerk;
+    while(scan.hasNext())
+    {
+      String name = scan.next();
+      String user = scan.next();
+      String password = scan.next();
+      clerk = new Clerk(name, user, password);
+      clerks.add(clerk);
+    }
+      System.out.println(clerks);
+    
+  }
+}
+      

@@ -1,0 +1,14 @@
+//FileWriter.java
+import java.io.*;
+import java.util.*;
+
+public class FileWriter 
+{
+  public static void newUser(String user, String name, String password, String street, String city, String state, String zipcode, String phoneNum)
+  {
+    FileWriter fw = new FileWriter ("customer1.txt");
+    BufferedWriter bw = new BufferedWriter(fw);
+    PrintWriter fileOut = new PrintWriter (bw);
+    fileOut.print(user + " " + password + "" + AccountArrayList.accounts.size());      
+  }
+}

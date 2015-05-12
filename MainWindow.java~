@@ -1,0 +1,35 @@
+/******************************************
+*                                         
+* Official Name:  Omer Winrauke        
+*                                         
+* Nickname:  Omer                      
+*                                         
+* E-mail:  owinrauk@syr.edu               
+*                                         
+* Final Project:  Omer Mutual             
+*                                         
+* Compiler:  drJava on a pc (or mac)               
+*                                         
+* Date:  Dec. 2, 2013              
+*                                         
+*******************************************/
+import java.awt.*;
+import javax.swing.*;
+import java.io.*; 
+//frame of the program
+public class MainWindow
+{
+  public static void main(String[] args) throws IOException
+  {
+    JFrame frame = new JFrame("Omer Mutual");
+    frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    MainWindowPanel panel = new MainWindowPanel();
+    frame.getContentPane().add(panel);
+    frame.pack();
+    frame.setVisible(true);
+    //runnning the arraylist so they can set up all the object data
+    AccountArrayList.arrayList();
+    ClerkArrayList.clerkList();
+    ManagerArrayList.managerList();
+  }
+}
